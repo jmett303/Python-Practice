@@ -8,6 +8,8 @@ while player_wins < winning_score and computer_wins < winning_score:
     print("...rock...\n...paper...\n...scissors...\n")
     
     player = input("Player, make your move: ").lower()
+    if player == "quit" or player == "q":
+        break
     comp = randint(0,2)
     if comp == 0:
         comp = "rock"
@@ -45,7 +47,9 @@ while player_wins < winning_score and computer_wins < winning_score:
         
 if player_wins > computer_wins:
     print("CONGRATS, YOU WON!")
+elif player_wins == computer_wins:
+    print("IT'S A TIE!")
 else:
-    print("Sorry, you lost...")
+    print("OH NO, THE COMPUTER WON...")
     
 print(f"Final scores... Player score: {player_wins} Computer score: {computer_wins}")
