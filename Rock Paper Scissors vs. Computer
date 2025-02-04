@@ -1,33 +1,51 @@
 from random import randint
+player_wins = 0
+computer_wins = 0
+winning_score = 2
 
-print("...rock...\n...paper...\n...scissors...\n")
-player = input("Player, make your move: ").lower()
-
-comp = randint(0,2)
-if comp == 0:
-    comp = "rock"
-elif comp == 1:
-    comp = "paper"
+while player_wins < winning_score and computer_wins < winning_score:
+    print(f'Player score: {player_wins} Computer score: {computer_wins}')
+    print("...rock...\n...paper...\n...scissors...\n")
+    
+    player = input("Player, make your move: ").lower()
+    comp = randint(0,2)
+    if comp == 0:
+        comp = "rock"
+    elif comp == 1:
+        comp = "paper"
+    else:
+        comp = "scissors"
+    print(f'Computer:\n{comp}')
+    
+    if player == comp:
+        print("It's a tie!")
+    elif player == "rock":
+        if comp == "scissors":
+            print("You win!")
+            player_wins =+ 1
+        else:
+            print("Computer wins!")
+            computer_wins += 1
+    elif player == "paper":
+        if comp == "rock":
+            print("You win!")
+            player_wins =+ 1
+        else:
+            print("Computer wins!")
+            computer_wins += 1
+    elif player == "scissors":
+        if comp == "paper":
+            print("You win!")
+            player_wins =+ 1
+        else:
+            print("Computer wins!")
+            computer_wins += 1
+    else:
+        print("Please, enter a valid move")
+        
+if player_wins > computer_wins:
+    print("CONGRATS, YOU WON!")
 else:
-    comp = "scissors"
-print(f'Computer:\n{comp}')
-
-if player == comp:
-    print("It's a tie!")
-elif player == "rock":
-    if comp == "scissors":
-        print("You win!")
-    else:
-        print("Computer wins!")
-elif player == "paper":
-    if comp == "rock":
-        print("You win!")
-    else:
-        print("Computer wins!")
-elif player == "scissors":
-    if comp == "paper":
-        print("You win!")
-    else:
-        print("Computer wins!")
-else:
-    print("Please, enter a valid move")
+    print("Sorry, you lost...")
+    
+print(f"Final scores... Player score: {player_wins} Computer score: {computer_wins}")
